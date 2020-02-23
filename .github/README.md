@@ -10,6 +10,7 @@ Package manager for unix and windows written in rustlang
 
 fixme: Change the URL based on the website used<br>
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RXT0112/RXT0112)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKreyren%2FZernit.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FKreyren%2FZernit?ref=badge_shield)
 
 fixme: Add prety button<br>
 https://codesandbox.io/s/github/RXT0112/RXT0112
@@ -18,3 +19,7 @@ https://codesandbox.io/s/github/RXT0112/RXT0112
 Package manager capable of source and binary export with tracking in `world` file and options.
 
 Developed with GUI in mind
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKreyren%2FZernit.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FKreyren%2FZernit?ref=badge_large)
