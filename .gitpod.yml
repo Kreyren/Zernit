@@ -1,7 +1,6 @@
 privileged: true
 
-image:
-  file: gitpod/workspace-full-vnc:latest
+image: gitpod/workspace-full-vnc:latest
 
 ports:
   - port: 6080
