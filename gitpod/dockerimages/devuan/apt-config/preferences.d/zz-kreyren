@@ -1,0 +1,81 @@
+# Directory used for pinning of the packages
+
+# NOTICE(Krey): The pins are applied from top to bottom -> pin at the EOF overwrites pin on BOF
+
+# WARNING(Krey): Each pin has to be separated by either new line or a comment
+
+# Codename compatibility DEBIAN<=>DEVUAN
+# - jessie = jessie
+# - stratch = ascii
+# - buster = beowulf
+# - bullseye = chimaera
+# - sid = ceres
+# - experimental = experimental
+
+# Pinning
+## Grabbed from `man apt_preferences`
+# P >= 1000 -- causes a version to be installed even if this constitutes a downgrade of the package
+# 990 <= P < 1000 -- causes a version to be installed even if it does not come from the target release, unless the installed version is more recent
+# 500 <= P < 990 -- causes a version to be installed unless there is a version available belonging to the target release or the installed version is more recent
+# 100 <= P < 500 -- causes a version to be installed unless there is a version available belonging to some other distribution or the installed version is more recent
+# 0 < P < 100 -- causes a version to be installed only if there is no installed version of the package
+# P < 0 -- prevents the version from being installed
+# p = 0 -- undefined behavior
+
+# Abstract
+# - Install everything from debian unless there is a package for devuan
+# - Do not install non-free unless pinned explicitely
+# - Do not use contrib unless pinned explicitely
+
+## STABLE PINNING ##
+
+Package: *
+Pin: release n=beowulf
+Pin-Priority: -1
+
+Package: *
+Pin: release n=buster
+Pin-Priority: -1
+
+## TESTING PINNING ##
+
+# Default release
+Package: *
+Pin: release n=chimaera
+Pin-Priority: 990
+
+Package: *
+Pin: release n=bullseye
+Pin-Priority: 500
+
+# wine-staging
+Package: winehq-staging
+Pin: release n=bullseye
+Pin-Priority: 500
+
+## UNSTABLE PINNING ##
+
+## NON-FREE PINNING ##
+
+# Exclude non-free targets
+# WARNING: Do not use apt.conf with 'APT::Default-Release' since it overwrites this pin
+Package: *
+Pin: release c=non-free
+Pin-Priority: -1
+
+## CONTRIB PINNING ##
+
+Package: *
+Pin: release c=contrib
+Pin-Priority: -1
+
+## BLACKLIST ##
+
+# #FuckYouPoettering
+# - systemd -> OpenRC
+# - elogind -> consolekit
+Package: systemd elogind
+Pin: release n=*
+Pin-Priority: -1
+
+# APT::Default-Release from apt.conf is appended here (?)

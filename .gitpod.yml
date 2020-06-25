@@ -1,22 +1,14 @@
+# Allow root access for priviledged users
 privileged: true
 
 image:
-  file: gitpod/debian.Dockerfile
+  file: gitpod/dockerimages/devuan/devuan.Dockerfile
 
-# FIXME: Change gitpod user on GITPOD_GIT_USER_NAME env value
 tasks:
-  # Does not accept Quotation without '|' ?
-  - init: |
-      printf 'FIXME: %s\n' "Get rid of me"
-    command: |
-      printf 'FIXME: %s\n' "This is a hotfix for https://github.com/gitpod-io/gitpod/issues/1252 manipulating PS1 env var"
-      # FIXME: The color of second line does not transfer to the environment unless Ctrl+C is pressed
-      export PS1="\033[1m\e[38;5;201m[ \t : \w : EXIT \$? ]\033[0m\e[38;5;011m\n\u@gitpod \\$ \[$(tput sgr0)\]"
-      #           ^^^^^^^ - bolt
-      #                  ^^^^^^^^^^^^ - Purple color
-      #                                                    ^^^^^^ - remove bolt
-      #                                                           ^^^^^^^^^^^ - Gold color
-      clear
+# NOTICE(Krey): Stub for root access
+- command: [ "$(curl https://api.github.com/repos/gitpod-io/gitpod/issues/39 2>/dev/null | jq -r '.state')" = open ] && printf '\033[31m\033[1mBLOCKED:\033[0m %s\n' "Zernit development requires a root account for various system configuration and VM handling of cross-platform development which is provided only to privileged users (Gitpod Developers), see https://github.com/gitpod-io/gitpod/issues/39"
+# NOTICE(Krey): Stub for VM support
+- command: [ "$(curl https://api.github.com/repos/gitpod-io/gitpod/issues/1265 2>/dev/null | jq -r '.state')" = open ] && printf '\033[31m\033[1mBLOCKED:\033[0m %s\n' "Zernit development requires a VM support for cross-platforming which is currently not supported in gitpod, see https://github.com/gitpod-io/gitpod/issues/1265"
 
 vscode:
   extensions:
