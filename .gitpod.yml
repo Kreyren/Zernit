@@ -1,5 +1,7 @@
+privileged: true
+
 image:
-  file: gitpod/gitpod.Dockerfile
+  file: gitpod/workspace-full-vnc:latest
 
 ports:
   - port: 6080
