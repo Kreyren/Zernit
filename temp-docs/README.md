@@ -1,0 +1,1 @@
+Temporary directory for project-related documentation
